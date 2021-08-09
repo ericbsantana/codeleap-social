@@ -5,7 +5,7 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="flex justify-center h-screen bg-gray-300">
+    <div className="flex justify-center h-full bg-gray-300">
       <Router>
         <Switch>
           <Route path="/dashboard">
