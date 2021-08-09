@@ -8,6 +8,9 @@ module.exports = {
     extend: {
       opacity: ["disabled"],
       cursor: ["disabled"],
+      backgroundColor: ["disabled"],
+      textColor: ["disabled"],
+      borderColor: ["disabled"],
     },
   },
   plugins: [
