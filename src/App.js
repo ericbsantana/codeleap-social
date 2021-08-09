@@ -5,18 +5,20 @@ import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="flex justify-center h-full bg-gray-300">
-      <Router>
-        <Switch>
-          <Route path="/dashboard">
+    <Router>
+      <Switch>
+        <Route path="/dashboard">
+          <div className="flex justify-center h-full bg-gray-300">
             <Dashboard />
-          </Route>
-          <Route path="/">
+          </div>
+        </Route>
+        <Route path="/">
+          <div className="flex justify-center h-screen bg-gray-300">
             <Signup />
-          </Route>
-        </Switch>
-      </Router>
-    </div>
+          </div>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 
