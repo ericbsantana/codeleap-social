@@ -35,13 +35,18 @@ export const postReducer = (state = INITIAL_STATE, action) => {
         isError: true,
       };
     case POST_SUCCESS:
-      let splitNextUrl = action.payload.next.split("/");
-      splitNextUrl[0] = "https:";
+      let splitNewUrl = null;
 
-      let splitNewUrl = splitNextUrl.join("/");
+      if (action.payload.next) {
+        let splitNextUrl = action.payload.next.split("/");
+        splitNextUrl[0] = "https:";
 
-      //omg why the api does not return https instead of http?!
+        splitNewUrl = splitNextUrl.join("/");
 
+        //omg why the api does not return https instead of http?!
+      }
+
+      console.log(splitNewUrl);
       return {
         ...state,
         isLoading: false,
