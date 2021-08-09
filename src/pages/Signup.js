@@ -1,7 +1,12 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
+
+  const history = useHistory();
+  const dispatch = useDispatch();
 
   const handleInput = (e) => {
     const { value } = e.target;
@@ -30,6 +35,10 @@ const Signup = () => {
         type="button"
         className="w-32 px-1 py-2 bg-gray-800 text-white font-bold uppercase self-end hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed"
         disabled={!username.trim().length > 0}
+        onClick={() => {
+          dispatch({ type: "LOGIN_USER", payload: username });
+          history.push("/dashboard");
+        }}
       >
         Enter
       </button>
