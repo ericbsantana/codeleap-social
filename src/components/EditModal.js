@@ -1,7 +1,7 @@
 import Modal from "./Modal";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { fetchPosts } from "./../actions/post";
+import { editPost } from "./../actions/post";
 
 const EditModal = (props) => {
   const [title, setTitle] = useState("");
@@ -31,25 +31,6 @@ const EditModal = (props) => {
     return false;
   };
 
-  const editPost = async (id) => {
-    fetch(`https://dev.codeleap.co.uk/careers/${id}/`, {
-      method: "PATCH",
-      body: JSON.stringify({
-        title: title,
-        content: content,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => res.text())
-      .then((res) => {
-        dispatch(fetchPosts());
-        console.log(res);
-      })
-      .catch((error) => console.log(error));
-  };
-
   return (
     <div>
       <Modal
@@ -57,7 +38,7 @@ const EditModal = (props) => {
         setIsShowing={props.setIsShowing}
         title="Edit item"
         action={() => {
-          editPost(props.id);
+          dispatch(editPost({ id: props.id, title: title, content: content }));
         }}
         actionName="Edit"
         enabled={validateInput(title, content)}
