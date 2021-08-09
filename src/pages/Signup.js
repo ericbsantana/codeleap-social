@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { useHistory } from "react-router-dom";
 import { Login } from "../actions/user";
+import { useHistory } from "react-router-dom";
 
 const Signup = () => {
   const [username, setUsername] = useState("");
@@ -16,7 +16,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="flex flex-col space-y-5 w-1/2 lg:w-1/3 px-10 py-5 bg-white self-center">
+    <div className="flex flex-col space-y-5 w-full m-2 lg:w-1/3 px-10 py-5 bg-white self-center">
       <h1 className="font-bold text-xl lg:text-2xl">
         Welcome to CodeLeap network!
       </h1>
