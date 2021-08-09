@@ -6,14 +6,18 @@ import {
   faCircleNotch,
   faTimesCircle,
   faAngleDoubleUp,
+  faSignOutAlt,
 } from "@fortawesome/free-solid-svg-icons";
 
 import { fetchPosts } from "./../actions/post";
+import { Logout } from "../actions/user";
 import { useEffect, Fragment } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
+  const history = useHistory();
 
   useEffect(() => {
     dispatch(fetchPosts());
@@ -28,8 +32,20 @@ const Dashboard = () => {
   return (
     <Fragment>
       <div className="lg:w-1/2 bg-white">
-        <div className="w-full bg-black text-white font-bold text-xl p-6">
+        <div className="flex justify-between w-full bg-black text-white font-bold text-xl p-6">
           <h1>CodeLeap Network</h1>
+          <button
+            onClick={() => {
+              dispatch(Logout());
+              history.push("/");
+            }}
+          >
+            <FontAwesomeIcon
+              icon={faSignOutAlt}
+              size={"lg"}
+              className="hover:text-gray-50"
+            />
+          </button>
         </div>
         <Form />
         {isError && (
