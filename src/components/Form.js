@@ -1,6 +1,11 @@
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchPosts } from "./../actions/post";
 
 const Form = (props) => {
+  const dispatch = useDispatch();
+  const { username } = useSelector((state) => state.userReducer);
+
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
 
@@ -16,11 +21,29 @@ const Form = (props) => {
     setContent(value);
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (validateInput(title, content)) {
-      console.log("go!");
+      console.log({ username: username, title: title, content: content });
+      fetch("https://dev.codeleap.co.uk/careers/", {
+        method: "POST",
+        body: JSON.stringify({
+          username: username,
+          title: title,
+          content: content,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((json) => {
+          dispatch(fetchPosts());
+          setTitle("");
+          setContent("");
+        })
+        .catch((error) => console.log(error));
     }
   };
 
@@ -46,6 +69,7 @@ const Form = (props) => {
             type="text"
             className="w-full"
             onChange={(e) => handleTitleInput(e)}
+            value={title}
           />
         </div>
         <div>
@@ -55,12 +79,16 @@ const Form = (props) => {
             rows="5"
             className="w-full resize-none"
             onChange={(e) => handleContentInput(e)}
+            value={content}
           />
         </div>
         <button
           type="button"
-          className="w-32 px-1 py-2 bg-gray-800 text-white font-bold uppercase self-end hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed"
+          className="w-32 px-1 py-2 bg-gray-800 text-white font-bold uppercase self-end hover:bg-black disabled:opacity-50 disabled:cursor-not-allowed disabled:bg-gray-800"
           disabled={!validateInput(title, content)}
+          onClick={(e) => {
+            handleSubmit(e);
+          }}
         >
           Create
         </button>
