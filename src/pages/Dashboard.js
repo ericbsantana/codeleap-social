@@ -48,27 +48,29 @@ const Dashboard = () => {
           </button>
         </div>
         <Form />
-        {isError && (
-          <div className="flex flex-col items-center justify-center mt-auto w-full h-70 text-3xl bg-white font-bold space-y-5">
-            <FontAwesomeIcon
-              icon={faTimesCircle}
-              className="text-red-600"
-              size={"lg"}
-            />
-            <p className="text-red-600">Error!</p>
-          </div>
-        )}
-        {isLoading && (
-          <div className="flex flex-col items-center justify-center mt-auto w-full h-70 text-3xl bg-white font-bold space-y-5">
-            <FontAwesomeIcon
-              icon={faCircleNotch}
-              className="animate-spin"
-              size={"lg"}
-            />
-            <p>Loading...</p>
-          </div>
-        )}
-        <div>
+        <div className="flex flex-col items-center justify-center mt-auto w-full h-70 text-3xl bg-white font-bold space-y-5">
+          {isError && (
+            <Fragment>
+              <FontAwesomeIcon
+                icon={faTimesCircle}
+                className="text-red-600"
+                size={"lg"}
+              />
+              <p className="text-red-600">Error!</p>
+            </Fragment>
+          )}
+          {isLoading && (
+            <Fragment>
+              <FontAwesomeIcon
+                icon={faCircleNotch}
+                className="animate-spin"
+                size={"lg"}
+              />
+              <p>Loading...</p>
+            </Fragment>
+          )}
+        </div>
+        <div className="h-auto">
           {posts.map((post) => (
             <Post
               key={post.id}

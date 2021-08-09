@@ -8,7 +8,7 @@ function App() {
     <Router>
       <Switch>
         <Route path="/dashboard">
-          <div className="flex justify-center h-full bg-gray-300">
+          <div className="flex justify-center min-h-screen h-full bg-gray-300">
             <Dashboard />
           </div>
         </Route>
