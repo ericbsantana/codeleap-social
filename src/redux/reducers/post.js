@@ -46,7 +46,6 @@ export const postReducer = (state = INITIAL_STATE, action) => {
         //omg why the api does not return https instead of http?!
       }
 
-      console.log(splitNewUrl);
       return {
         ...state,
         isLoading: false,
