@@ -3,7 +3,6 @@ import { LOGIN_USER, LOGOUT_USER } from "../../actions/types";
 let user = "";
 if (JSON.parse(localStorage.getItem("store"))) {
   user = JSON.parse(localStorage.getItem("store")).userReducer.username;
-  console.log(user);
 }
 
 const INITIAL_STATE = { username: user };
