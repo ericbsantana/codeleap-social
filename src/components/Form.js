@@ -53,7 +53,7 @@ const Form = (props) => {
           <label className="text-lg">Title</label>
           <input
             type="text"
-            className="w-full"
+            className="w-full focus:outline-none focus:ring-0 focus:border-gray-700 rounded-md"
             onChange={(e) => handleTitleInput(e)}
             value={title}
           />
@@ -63,7 +63,7 @@ const Form = (props) => {
           <textarea
             type="text"
             rows="5"
-            className="w-full resize-none"
+            className="w-full resize-none focus:outline-none focus:ring-0 focus:border-gray-700 rounded-md"
             onChange={(e) => handleContentInput(e)}
             value={content}
           />

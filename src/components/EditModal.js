@@ -53,7 +53,7 @@ const EditModal = (props) => {
             <label>Title</label>
             <input
               type="text"
-              className="w-full"
+              className="w-full focus:outline-none focus:ring-0 focus:border-gray-700 rounded-md"
               onChange={(e) => handleTitleInput(e)}
               value={title}
             />
@@ -63,7 +63,7 @@ const EditModal = (props) => {
             <textarea
               type="text"
               rows="4"
-              className="w-full resize-none"
+              className="w-full resize-none focus:outline-none focus:ring-0 focus:border-gray-700 rounded-md"
               onChange={(e) => handleContentInput(e)}
               value={content}
             />

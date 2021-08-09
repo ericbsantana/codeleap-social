@@ -25,7 +25,7 @@ const Signup = () => {
         <input
           type="text"
           placeholder="John Doe"
-          className="rounded-md w-full"
+          className="w-full focus:outline-none focus:ring-0 focus:border-gray-700 rounded-md"
           onChange={(e) => {
             handleInput(e);
           }}
